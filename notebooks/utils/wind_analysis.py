@@ -31,28 +31,4 @@ def wind_analysis_polar(filePath):
     ax.set_title('Wind Analysis: Distribution of Wind Speed and Direction', va='bottom')
     plt.show()
 
-    # Step 2: Polar Plot for Variability in Wind Direction
-    plt.figure(figsize=(10, 8))
-    ax = plt.subplot(111, polar=True)
 
-    # Create bins for wind direction
-    n_bins = 36  # 10-degree bins (360/36)
-    bin_edges = np.linspace(0, 360, n_bins + 1)
-    bin_centers = np.deg2rad((bin_edges[:-1] + bin_edges[1:]) / 2)
-
-    # Histogram of wind directions
-    wind_counts, _ = np.histogram(wd, bins=bin_edges)
-    bars = ax.bar(bin_centers, wind_counts, width=np.deg2rad(10), bottom=0.0, color='blue', alpha=0.6)
-
-    # Set plot details
-    ax.set_theta_direction(-1)  # Clockwise direction
-    ax.set_theta_offset(np.pi / 2.0)  # Zero degrees at the top (North)
-    ax.set_title('Variability in Wind Direction', va='bottom')
-    plt.show()
-
-# Example usage:
-# Load your dataset
-# df = pd.read_csv('your_data.csv')
-
-# Call the function to analyze wind data
-# wind_analysis_polar(df)
