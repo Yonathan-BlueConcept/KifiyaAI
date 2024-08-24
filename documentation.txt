@@ -1,0 +1,31 @@
+Summary statistics and data cleaning
+The first problem I tackled was summarizing and cleaning the data. And I wrote a code that  defines a function that processes a dataset by loading it from a file, cleaning it by removing columns with entirely missing data, and then focusing on the numerical data. Finally, it returns summary statistics for the numerical columns, providing a high-level overview of the dataset's key metrics. This function is used to efficiently prepare and analyze solar farm data.
+Data Quality Check
+The code I  designed to clean and refine solar farm data goes through two main steps.
+First, the cleanData function filters the dataset by removing any rows where the solar irradiance values (GHI, DNI, DHI) are negative, ensuring the data only includes valid measurements.
+Next, the removeOutliers function is applied to the cleaned dataset. It identifies and removes outliers from specified columns using the Interquartile Range (IQR) method, further refining the data by keeping only values within a calculated normal range.
+Together, these methods prepare the dataset for more accurate analysis by removing invalid entries and extreme outliers.
+Time Series Analysis
+To analyze the Time series I defined the method called plot_time_series.
+The plot_time_series function loads the dataset, converts the timestamp column to a datetime format, and sets it as the index for the DataFrame. It then creates a series of line plots to visualize how key variables—Global Horizontal Irradiance (GHI), Direct Normal Irradiance (DNI), Diffuse Horizontal Irradiance (DHI), and Ambient Temperature (Tamb)—change over time.
+These visualizations provide insights into the temporal patterns and trends in solar irradiance and temperature, aiding in the analysis of solar energy performance.
+
+
+
+
+
+Correlation Analysis
+The function I wrote  loads the dataset and selects key variables—Global Horizontal Irradiance (GHI), Direct Normal Irradiance (DNI), Diffuse Horizontal Irradiance (DHI), and two module temperature measures (TModA, TModB). It then calculates the correlation matrix to determine how these variables are related to each other. Finally, the function creates a heatmap to visually represent these correlations, highlighting the strength and direction of the relationships between the solar radiation components and temperature measures. This visualization helps in understanding how these factors interact, providing insights for further analysis.
+Wind Analysis
+The code I designed to analyze and visualize the distribution of wind speed and direction uses  a polar plot.
+The wind_analysis_polar function loads wind-related data, including wind speed, wind gust, and wind direction, from a solar farm dataset. It then converts the wind direction into radians to facilitate the creation of a polar plot. The plot visually represents wind speed and gusts in relation to their direction, using color gradients to indicate the intensity of wind events. This visualization provides a clear and intuitive understanding of the wind patterns at the solar farm, highlighting both regular wind behavior and significant gust events.
+Temperature Analysis
+The (analyze_humidity_influence) function performs a series of visual analyses to explore how relative humidity impacts key variables such as module temperatures (TModA, TModB) and solar radiation components (GHI, DNI, DHI). It creates scatter plots to visualize the relationships between RH and these variables, highlighting potential correlations. Additionally, a correlation heatmap is generated to provide a comprehensive overview of the statistical relationships among these factors. This analysis helps to understand the role of humidity in affecting both temperature and solar energy production, offering valuable insights for optimizing solar farm performance.
+Histograms
+The plot_histograms function creates histograms for several important variables, including solar irradiance components (GHI, DNI, DHI), wind speed (WS), and module temperatures (TModA, TModB). By plotting these variables, the function provides a clear view of their frequency distributions, helping to identify common values, variability, and the presence of any skewness or outliers. Additionally, the inclusion of kernel density estimates (KDE) enhances the visualization by providing a smooth representation of the data's probability density. This analysis aids in understanding the overall characteristics of the dataset, offering insights into the behavior of each variable.
+
+Z-Score Analysis
+calculate_z_scores function computes the Z-scores for the specified columns in the dataset, which measure how many standard deviations each data point is from the mean of its respective column. This standardization process transforms the data into a form where the mean is 0 and the standard deviation is 1, making it easier to compare values across different scales. This method is particularly useful for identifying outliers and ensuring that variables with different units or magnitudes can be analyzed on a common scale.
+
+Bubble Charts
+The designed  plot_bubble_chart function generates a scatter plot where the x-axis and y-axis represent the two main variables, while the size of each bubble reflects the magnitude of a third variable. If a color variable is provided, it adds a color gradient to further illustrate variations in this additional dimension. This visualization helps in understanding the interactions between the variables, highlighting trends and patterns, and making comparisons based on the size and color of the bubbles.
