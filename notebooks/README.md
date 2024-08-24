@@ -1,0 +1,1 @@
+ The file path of the .csv files used throughout the project can be found in the consts.py file located in the notebooks/utils/ directory.
